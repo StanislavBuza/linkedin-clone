@@ -2,15 +2,26 @@ import React from "react";
 import "./Header.css";
 import {Search as SearchIcon, Home, SupervisorAccount, BusinessCenter, Chat, Notifications} from "@material-ui/icons";
 import HeaderOption from "./HeaderOption";
+import {useDispatch} from "react-redux";
+import {logout} from "./features/userSlice";
+import {auth} from "./firebase";
 
 function Headerr() {
+
+    const dispatch = useDispatch();
+
+    const logoutOfApp = () => {
+        dispatch(logout());
+        auth.signOut().catch(error => alert(error));
+    };
+
     return (
         <h1 className="header">
             <div className="header_left">
                 <img src="https://flaticon.com/svg/static/icons/svg/174/174857.svg" alt=""/>
                 <div className="header_search">
                     <SearchIcon/>
-                    <input type="text"/>
+                    <input placeholder="Search" type="text"/>
                 </div>
             </div>
 
@@ -20,8 +31,9 @@ function Headerr() {
                 <HeaderOption Icon={BusinessCenter} title="Jobs"/>
                 <HeaderOption Icon={Chat} title="Messaging"/>
                 <HeaderOption Icon={Notifications} title="Notifications"/>
-                <HeaderOption avatar="https://media-exp1.licdn.com/dms/image/C4E35AQF9JHQwR7sc_w/profile-framedphoto-shrink_400_400/0/1612290769437?e=1619240400&v=beta&t=opqB3A60-3bB02omRTb7pExaT8_8BWRUYKq2_SPaQeY"
-                title="Me"/>
+                <HeaderOption avatar={true}
+                              title="Me"
+                onClick={logoutOfApp}/>
             </div>
 
 

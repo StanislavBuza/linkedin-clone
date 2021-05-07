@@ -3,7 +3,8 @@
     top: 0;
     display: flex;
     justify-content: space-evenly;
-    border-bottom:  0.1px solid lightgray;
+    background-color: white;
+    border-bottom:  1px solid lightgray;
     padding-top: 10px;
     padding-bottom: 10px;
     width: 100%;
@@ -27,7 +28,7 @@
     border-radius: 5px;
     height: 22px;
     color: gray;
-    background: #eef3f8;
+    background-color: #eef3f8;
 }
 
 .header_search > input {
